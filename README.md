@@ -2,6 +2,33 @@
 
 该版本提供基于 Qt 的图形界面后端，用于交互式查看和处理 PtyRAD 重构结果。
 
+## 新用户环境安装
+
+本项目建议在独立的 Conda 环境中使用，避免和其他 Python 项目的依赖发生冲突。
+
+## 安装项目和依赖
+
+首次使用，或 `setup.py` 依赖发生变化后，运行：
+
+```powershell
+pip install -e .
+```
+
+该命令会安装 `plot_ptyrad` 命令，并安装主要依赖，包括 `torch`、`h5py`、`matplotlib`、`scipy`、`PySide6` 和 `pyqtgraph`。
+
+## 检查安装是否成功
+
+```powershell
+plot_ptyrad --help
+```
+
+如果安装正确，应能看到以下参数：
+
+```text
+--gui-backend {matplotlib,qt}
+--preview-max-size PREVIEW_MAX_SIZE
+```
+
 ### 1. 激活运行环境
 
 打开 PowerShell，并激活 `ptyrad` conda 环境：
@@ -62,6 +89,13 @@ plot_ptyrad --folder "/path/to/parent_folder" --file model_iter1000.hdf5 --gui-b
 ```
 
 `--preview-max-size` 用于控制 GUI 预览图像的最大边长。数值越小，交互越流畅，但预览分辨率也会降低。
+如果希望预览更清晰，可以提高预览尺寸：
+
+```powershell
+plot_ptyrad --folder "F:\Data_ARM300\20260510 SCO_96K\All_Data" --file model_iter1000.hdf5 --gui-backend qt --force --preview-max-size 1536
+```
+
+保存 PNG、视频和 MAT 文件时仍使用原始 full-resolution 数据，不受预览降采样影响。
 
 ### 推荐常用命令
 
