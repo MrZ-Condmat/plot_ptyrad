@@ -11,6 +11,7 @@
 首次使用，或 `setup.py` 依赖发生变化后，运行：
 
 ```powershell
+conda activate ptyrad
 pip install -e .
 ```
 
